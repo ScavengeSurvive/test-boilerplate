@@ -1,6 +1,7 @@
 #include <a_samp>
+#include <YSI\y_hooks>
 
-public OnGameModeInit() {
+hook OnGameModeInit() {
     AddPlayerClass(
         101,
         1958.33, 1343.12, 15.36, 269.15,
@@ -10,7 +11,7 @@ public OnGameModeInit() {
     return 1;
 }
 
-public OnPlayerSpawn(playerid) {
+hook OnPlayerSpawn(playerid) {
     SendClientMessage(playerid, -1, "test-boilerplate.inc");
 
     return 1;
