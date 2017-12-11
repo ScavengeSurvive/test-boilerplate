@@ -1,3 +1,8 @@
+#if defined _test_boilerplate_included
+	#endinput
+#endif
+#define _test_boilerplate_included
+
 #include <a_samp>
 #include <YSI\y_hooks>
 
