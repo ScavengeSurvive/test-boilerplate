@@ -10,12 +10,17 @@
 #define _test_boilerplate_included
 
 #include <a_samp>
-#include <YSI\y_timers>
 #include <YSI\y_hooks>
 
 #define _TB_DEFAULT_POS_X (300.0)
 #define _TB_DEFAULT_POS_Y (1800.0)
 #define _TB_DEFAULT_POS_Z (18.0)
+
+hook OnGameModeInit() {
+	AddPlayerClass(101,
+		_TB_DEFAULT_POS_X, _TB_DEFAULT_POS_Y, _TB_DEFAULT_POS_Z,
+		0.0, 0, 0, 0, 0, 0, 0);
+}
 
 hook OnPlayerConnect(playerid) {
 	SetSpawnInfo(playerid, NO_TEAM, 101,
@@ -45,6 +50,9 @@ hook OnPlayerRequestSpawn(playerid) {
 hook OnPlayerSpawn(playerid) {
 	SendClientMessage(playerid, -1, "Using ScavengeSurvive/test-boilerplate");
 	TogglePlayerControllable(playerid, true);
+	TogglePlayerSpectating(playerid, false);
+	SetPlayerPos(playerid, _TB_DEFAULT_POS_X, _TB_DEFAULT_POS_Y, _TB_DEFAULT_POS_Z);
+	SetCameraBehindPlayer(playerid);
 
 	return Y_HOOKS_CONTINUE_RETURN_1;
 }
